@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<banner banner_width="950" banner_height="300" banner_background_color="0xffffff" 
+banner_dynamic_resizing="no" autoplay_on="yes" banner_border="0" text_position="right" 
+text_transition_type="fly" text_fly_transition_fly_from="right" text_transition_blurred="yes_horizontal" 
+text_transition_speed="1" text_area_width="auto" text_format="html" text_size="14" text_color="0xBBEEFF" text_align="centre" 
+text_padding="5" text_selectable="no" text_background_color="0xFFFFFF" text_background_transparency="0" buttons_position="right" 
+buttons_width="1" buttons_height="60" buttons_fill_SWF_on_resize="yes" buttons_background_color="0xfcf7f1" 
+buttons_mouse_over_background_color="0xdedad4" buttons_background_transparency="0" circle_timer_position="top_right" 
+circle_timer_shown="yes" timer_speed="5" images_randomized="yes" image_transition_type="fade" image_fly_transition_fly_from="right" 
+image_mask_transition_type="box" image_transition_blurred="yes_both" image_transition_speed="1" image_mouse_over_effect="no">
+
+
+	<image button_text="3" src="images/home3.jpg" linkOutURL="" linkOutTarget=""><![CDATA[]]>
+	</image><image button_text="2" src="images/home2.jpg" linkOutURL="" linkOutTarget=""><![CDATA[]]>
+	</image><image button_text="4" src="images/home4.jpg" linkOutURL="" linkOutTarget=""><![CDATA[]]>
+	</image><image button_text="5" src="images/home6.jpg" linkOutURL="" linkOutTarget=""><![CDATA[]]>
+	</image>
+
+		
+
+
+</banner>

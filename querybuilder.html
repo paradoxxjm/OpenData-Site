@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Data.Org.Jm - Query Builder</title>
+	<link href="css/reset.css" rel="stylesheet" type="text/css" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/script.js"></script>
+	
+</head>
+<body id="querybuilder">
+
+	<div id="main-wrapper">
+		<div id="logos" style="position:absolute;top:5px;z-index:99;width: 950px;">
+			<a href="http://myspot.mona.uwi.edu/msb/"><img id="msbLogo" alt="MSB_Logo" src="images/logo_msb.gif"></a><span style="font-size:16px;position:absolute;top:55px;z-index:99;padding-left:5px;color:#aaaa66;">Producing world<br />class leaders... </span>
+			<span style="float:right"><a href="http://coe-msb.org/"><img id="coeLogo" alt="COE_Logo" src="images/coe-logo.png"></a><span style="font-size:16px;position:relative;top:-30px;z-index:99;padding-left:5px;color:#aaaa66;">Open for Business...</span></span>
+		</div>
+		<div id="header-wrapper">
+			
+			<div id="main-menu">
+				<ul id="menu">		
+					<li><a href="index.php" class="home">Data.org.jm<span></span></a></li>
+					<li><a href="about.html" class="about">About Us<span></span></a></li>
+					<li><a href="querybuilder.html" class="querybuilder">QueryBuilder<span></span></a></li>
+					<li><a href="documentation.html" class="documentation">Documentation<span></span></a></li>
+					<li><a href="appshowcase.html" class="appshowcase">Application Showcase<span></span></a></li>
+				</ul>
+			</div>
+		</div> <!--END OF HEADER-->
+		<div id="mwidget-top">
+			<object width="950" height="300" align="middle">
+			<param value="transparent" name="movie" value="home.swf">
+			<embed src="home.swf" width="950" height="300">
+			</embed>
+			</object>					
+				
+			<!-- QUERY BUILDER-->
+			<div id="container">
+				<div id="main-body">
+					<div id="mwidget-top2">
+						<span class="mainTitle">Query Builder</span>
+					</div>
+					<div id="qbuilder">
+						<div id="questions-wrapper">
+							<form id="elementForm" name="filterForm" action="javascript:void(0)">
+								<div class="questions">
+									<label>Layer: </label><span></span>
+									<select name="layselect" id="layselect" onchange="sendOptions();">										
+										<option value="farms">Farms</option>
+										<option value="crops">Crops</option>										
+										<option value="prices">Prices</option>										
+									</select>
+								</div>
+								<div class="questions">
+									<label>Attribute: </label><span></span>
+									<select id="element" name="element" >
+										
+										
+									</select>
+								</div>
+								<div class="questions">
+									<label>Condition: </label><span></span>
+									<select name="expressions" id="expressions" >
+										<option ></option>
+										<option value="=">=</option>
+										<option value="<"><</option>
+										<option value="<="><=</option>
+										<option value=">">></option>
+										<option value=">=">>=</option>
+									
+									</select>
+								</div>
+								<div class="questions">
+									<label>Value: </label><span></span>
+									<input type="text" name="inputValue" id="inputValue" >
+										
+									</input>
+								</div>
+								<div class="questions">
+									<!-- <label>Items Per Page: </label><span></span>
+									<select name="items-perpage" id="items-perpage" >
+										<option value="10">10</option>
+										<option value="50">50</option>
+									</select> -->
+								</div>
+							
+								<div class="niceHorizLine"></div>
+								<!-- <input name="clearQButton" id="clearQButton" type="image" src="images/cbutton-bg.png" alt="Clear All" onclick="document.addQuestions.reset();return false"> -->
+								<input name="addQButton" id="addQButton" type="image" src="images/submit.png" onclick="evalForm();" alt="Submit Questions">
+							</form>
+						</div>
+						<div id="info-section">
+							<!--<div class="title">-->
+								Welcome to <em><b>data.org.jm's</b></em> Query Builder,<br /><br />
+								<p>The Query Builder may be used to assist you in generating acceptable API calls. 
+								Please use the appropriate medium to report issues that may arise during usage.</p>
+							<!--</div>-->
+						</div>
+						
+					</div>
+					
+				</div>
+				<div id="resultquery" class="search-items" style="clear:both;margin:0 auto;padding:0 0 0 200px;width:740px;background-color:#fcfcfc;margin:5px 0 0 10px;font-size:22px;"> 
+				
+				</div>
+				<div id="resultdata" class="data-items" style="clear:both;margin:0 auto;padding:0px;width:950px;background-color:#aaaa66;color:#fff;margin-top:5px"> 
+					
+				</div>
+			</div> <!-- CLOSE qUERY bUILDER-->
+		</div>
+		<div id="footer">
+			<span><center>Copyright &copy; 2011 <a href="http://data.org.jm" target="_blank"> data.org.jm</a><br />
+			Developed and Hosted by The Mona School of Business - Centre of Excellence <br>
+			An Initiative funded by the International Development Research Centre (IDRC)</center></span>
+			<p></p>
+		</div>
+	</div> <!--END OF MAIN WRAPPER-->
+	
+	<script type="text/javascript">
+		sendOptions();
+		function sendOptions(){
+			var elemStr = document.filterForm.layselect.value;
+			//window.alert(elemStr); 
+			if(elemStr=="farms"){addOption_propLayr();}else if(elemStr=="crops"){addOption_cropLayr();}else if(elemStr=="prices"){addOption_cropPrices();}else{document.filterForm.element.value="-"};
+		}
+		function evalForm(){
+		var layr = document.filterForm.layselect.value;
+		var attribut = document.filterForm.element.value;
+		var cond = document.filterForm.expressions.value;
+		var val = document.filterForm.inputValue.value;
+		var htmlTxt= 'http://data.org.jm/api/';
+		//window.alert(htmlTxt);
+		
+		var quesmrk= '?';
+		if(attribut==""){quesmrk='';}
+		var queryTxt =document.getElementById('resultquery');
+		var apiCall= htmlTxt+layr+quesmrk+attribut+cond+val;
+		queryTxt.innerHTML ='<a href="'+apiCall+'" target="_blank">'+apiCall+'</a>';
+	}
+	</script>
+</body>
+</html>

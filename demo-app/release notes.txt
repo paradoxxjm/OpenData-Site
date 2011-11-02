@@ -1,0 +1,16 @@
+version=0.1
+
+==Things to add==
+-auto refresh after searching/query
+-loading icon when searching/query
+-all queries should be case insensitive
+
+==Bugs==
+-Map loading icon/screen not effective
+-Submitting queries via "enter" key as opposed to mouse click does not initiate run query function
+-Pressing query "Apply" button without entering information breaks the map
+-Mapping points that appear outside of region (i.e parash, Jamaica[in ocean], etc.]
+
+==Things to note==
+-All data in fusionTable is in CAPS, while queries are not currently formatted to.
+-code
